@@ -17,6 +17,7 @@ namespace HeadsTails
         private void headBtn_Clicked(System.Object sender, System.EventArgs e)
         {
             headButtonClicked = true;
+            tailsButtonClicked = false;
             headBtn.BackgroundColor = Color.FromHex("#000000");
             TailsBtn.BackgroundColor = Color.FromHex("#0000FF");
 
@@ -25,6 +26,7 @@ namespace HeadsTails
         private void TailsBtn_Clicked(System.Object sender, System.EventArgs e)
         {
             tailsButtonClicked = true;
+            headButtonClicked = false;
             TailsBtn.BackgroundColor = Color.FromHex("#000000");
             headBtn.BackgroundColor = Color.FromHex("#0000FF");
         }
@@ -41,7 +43,7 @@ namespace HeadsTails
                 if (headButtonClicked==true){
                     DisplayAlert("Cara", "Você Acertou!!", "Ok");
                 }
-                else if(headButtonClicked == false)
+                else
                 {
                     DisplayAlert("Cara", "Você Errou!!, tente novamente", "Ok");
                 }
@@ -53,14 +55,14 @@ namespace HeadsTails
                 if (tailsButtonClicked==true){
                     DisplayAlert("Coroa", "Você Acertou!!", "Ok");
                 }
-                else if(tailsButtonClicked == false)
+                else
                 {
                     DisplayAlert("Coroa", "Você Errou!!, tente novamente", "Ok");
                 }
 
             }
 
-           
+
         }
     }
 
