@@ -18,7 +18,7 @@ namespace HeadsTails
         {
             headButtonClicked = true;
             tailsButtonClicked = false;
-            headBtn.BackgroundColor = Color.FromHex("#000000");
+            headBtn.BackgroundColor = Color.FromHex("#993399");
             TailsBtn.BackgroundColor = Color.FromHex("#0000FF");
 
         }
@@ -27,11 +27,11 @@ namespace HeadsTails
         {
             tailsButtonClicked = true;
             headButtonClicked = false;
-            TailsBtn.BackgroundColor = Color.FromHex("#000000");
+            TailsBtn.BackgroundColor = Color.FromHex("#993399");
             headBtn.BackgroundColor = Color.FromHex("#0000FF");
         }
 
-        private void randomBtn_Clicked(System.Object sender, System.EventArgs e)
+        private async void randomBtn_Clicked(System.Object sender, System.EventArgs e)
         {
             Random random = new Random();
             int result = random.Next(0, 2);
@@ -50,7 +50,8 @@ namespace HeadsTails
             }
             else if (result == 1)
             {
-                moeda.Source = "https://t4.ftcdn.net/jpg/05/64/35/03/360_F_564350370_LYxzggTtdpEvOMMUAxVFSTlTeQWfbh1L.jpg";
+                
+                 moeda.Source = "https://t4.ftcdn.net/jpg/05/64/35/03/360_F_564350370_LYxzggTtdpEvOMMUAxVFSTlTeQWfbh1L.jpg";
                
                 if (tailsButtonClicked==true){
                     DisplayAlert("Coroa", "Você Acertou!!", "Ok");
