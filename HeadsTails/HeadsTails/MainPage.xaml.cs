@@ -4,67 +4,48 @@ namespace HeadsTails
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+
 
         public MainPage()
         {
             InitializeComponent();
         }
 
-         bool headButtonClicked = false;
-         bool tailsButtonClicked = false;
-
-        private void headBtn_Clicked(System.Object sender, System.EventArgs e)
+        private void CoinFlipButton_Clicked(object sender, EventArgs e)
         {
-            headButtonClicked = true;
-            tailsButtonClicked = false;
-            headBtn.BackgroundColor = Color.FromHex("#993399");
-            TailsBtn.BackgroundColor = Color.FromHex("#0000FF");
-
-        }
-
-        private void TailsBtn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            tailsButtonClicked = true;
-            headButtonClicked = false;
-            TailsBtn.BackgroundColor = Color.FromHex("#993399");
-            headBtn.BackgroundColor = Color.FromHex("#0000FF");
-        }
-
-        private async void randomBtn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            Random random = new Random();
-            int result = random.Next(0, 2);
-
-            if (result == 0)
+            //Joga a moeda onde 0 é coroa e 1 a cara
+            //Primeiro desafio: Utiilzar uma Enumeração para Cara ou Coroa
+            //Segundo desafio: Utiilzar uma classe para representar a Moeda
+            int coin = new Random().Next(2);
+            if (coin == 0)
             {
-                moeda.Source = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0c0483ff-7316-4928-957d-3d0b1b7e0ec7/d84p3mj-44fe4bd2-a539-499e-bfe7-f830d9dcd193.jpg/v1/fill/w_1600,h_1621,q_75,strp/cara___moeda_de_1__real_vetorizada_by_matheus8b_d84p3mj-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTYyMSIsInBhdGgiOiJcL2ZcLzBjMDQ4M2ZmLTczMTYtNDkyOC05NTdkLTNkMGIxYjdlMGVjN1wvZDg0cDNtai00NGZlNGJkMi1hNTM5LTQ5OWUtYmZlNy1mODMwZDlkY2QxOTMuanBnIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.KhaoPG_8-7w5c52tXnSq2eE4q75hpbqlmrE2q07CkI4";
-
-                if (headButtonClicked==true){
-                    DisplayAlert("Cara", "Você Acertou!!", "Ok");
-                }
-                else
-                {
-                    DisplayAlert("Cara", "Você Errou!!, tente novamente", "Ok");
-                }
+                CoinImage.Source = "coroa.jpg";
             }
-            else if (result == 1)
+            if (coin == 1)
             {
-                
-                 moeda.Source = "https://t4.ftcdn.net/jpg/05/64/35/03/360_F_564350370_LYxzggTtdpEvOMMUAxVFSTlTeQWfbh1L.jpg";
-               
-                if (tailsButtonClicked==true){
-                    DisplayAlert("Coroa", "Você Acertou!!", "Ok");
-                }
-                else
-                {
-                    DisplayAlert("Coroa", "Você Errou!!, tente novamente", "Ok");
-                }
-
+                CoinImage.Source = "cara.jpg";
             }
+            
+            //Verifica o que o usuário selecionou
+            string selectedSide = Convert.ToString(HeadTailsPicker.SelectedItem);
 
-
+            if (coin == 0 && selectedSide == "Coroa")
+            {
+                ResultLabel.Text = "Parabéns, você ganhou";
+            }
+            if (coin == 1 && selectedSide == "Coroa")
+            {
+                ResultLabel.Text = "Que pena, você perdeu";
+            }
+            if (coin == 0 && selectedSide == "Cara")
+            {
+                ResultLabel.Text = "Que pena, você perdeu";
+            }
+            if (coin == 1 && selectedSide == "Cara")
+            {
+                ResultLabel.Text = "Parabéns, você ganhou";
+            }
         }
+
     }
-
 }
