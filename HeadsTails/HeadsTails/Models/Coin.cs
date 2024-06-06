@@ -8,10 +8,10 @@ namespace HeadsTails.Models
 {
     internal class Coin
     {
-        private string lado;
+       
 
         public string Lado { get; set; }
-        public string LadoEscolhido { get; set; }
+        public string LadoSorteado { get; set; }
 
 
         public Coin()
