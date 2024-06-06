@@ -27,6 +27,7 @@
 
         <Button   
          Text="Girar Moeda"
+         Command="{Binding }"
          />
     </VerticalStackLayout>
 </ContentPage>

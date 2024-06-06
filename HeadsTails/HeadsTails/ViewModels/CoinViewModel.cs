@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace HeadsTails.viewModels
 {
@@ -22,6 +23,15 @@ namespace HeadsTails.viewModels
         [ObservableProperty]
         //public string Escolha { get; set; }
         private string escolha;
+
+        public ICommand JogarCommand {get;}
+
+        public CoinViewModel()
+        {
+            JogarCommand = new Command(Jogar);
+
+        }
+
         public void Jogar()
         {
             //instanciando uma moeda
